@@ -5,6 +5,7 @@ import Posts from "../../components/posts/Posts";
 import Sidebar from "../../components/sidebar/Sidebar";
 import "./homepage.css";
 import axios from "axios"
+import {  URL } from "../../App";
 
 const  Homepage = () => {
   const [posts , setPosts] = useState([])
@@ -14,7 +15,7 @@ const  Homepage = () => {
 useEffect(() => {
   const fetchPosts = async () =>{
     try {
-      const res = await axios.get("http://localhost:5000/api/posts" + search )
+      const res = await axios.get(`${URL}/posts` + search )
    setPosts(res.data)
     } catch (error) {
       console.log(error)

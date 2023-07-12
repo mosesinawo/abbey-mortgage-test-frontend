@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import "./sidebar.css";
 import { useEffect, useState } from "react";
 import axios from "axios";
+import { URL } from "../../App";
 
 export default function Sidebar() {
 
@@ -10,7 +11,7 @@ export default function Sidebar() {
   useEffect(() => {
     const getCats = async () =>{
       try {
-        const res = await axios.get("http://localhost:5000/api/categories")
+        const res = await axios.get(`${URL}/categories`)
         setCats(res.data)
       } catch (error) {
         console.log(error)

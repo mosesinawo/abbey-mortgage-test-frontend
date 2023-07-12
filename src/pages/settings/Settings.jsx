@@ -1,11 +1,12 @@
 import "./settings.css";
 import Sidebar from "../../components/sidebar/Sidebar";
 import { useSelector, useDispatch } from "react-redux";
-import { getUser, user } from "../../redux/authSlice";
+import { getUser, logout, user } from "../../redux/authSlice";
 import { useState } from "react";
 import axios from "axios";
 import { toast } from "react-toastify";
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
+import { URL } from "../../App";
 
 export default function Settings() {
 
@@ -38,7 +39,7 @@ export default function Settings() {
       console.log(updatedUser)
 
       try {
-        const res = await axios.post("http://localhost:5000/api/upload",
+        const res = await axios.post(`${URL}/upload`,
           data)
         console.log(res)
       } catch (err) {
@@ -46,7 +47,7 @@ export default function Settings() {
       }
     }
     try {
-      const user = await axios.put("http://localhost:5000/api/users/" + currentUser._id,
+      const user = await axios.put(`${URL}/users/` + currentUser._id,
         updatedUser)
       setSuccess(true)
       dispatch(getUser(user.data))
@@ -55,7 +56,7 @@ export default function Settings() {
       console.log(error)
     }
     // try {
-    //   const res = await axios.patch(`http://localhost:5000/api/posts/${currentUser._id}`,
+    //   const res = await axios.patch(`${URL}/posts/${currentUser._id}`,
     //     { username: username })
     //   console.log(res)
     // } catch (error) {
@@ -66,7 +67,7 @@ export default function Settings() {
 
   const handleDelete = async () => {
     try {
-      const res = await axios.delete("http://localhost:5000/api/users/" + currentUser._id, {
+      const res = await axios.delete(`${URL}/users/` + currentUser._id, {
         data: {
           userId: currentUser._id,
           username: currentUser.username
@@ -79,6 +80,7 @@ export default function Settings() {
       if (res.status === 200) {
         history.push("/")
       }
+      dispatch(logout())
     } catch (error) {
       console.log(error)
       toast.error(`${error.response.data}`, {

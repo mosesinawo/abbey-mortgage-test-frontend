@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import { useSelector } from "react-redux";
 import { user } from "../../redux/authSlice";
+import { URL } from "../../App";
 export default function SinglePost() {
   const location = useLocation()
  const path = location.pathname.split("/")[2]
@@ -22,7 +23,7 @@ console.log(path)
   useEffect(() => {
     const getPost = async () =>{
       try {
-        const res = await axios.get(`http://localhost:5000/api/posts/${path}`)
+        const res = await axios.get(`${URL}/posts/${path}`)
         setPost(res.data)
      setTitle(res.data.title)
      setDesc(res.data.desc)
@@ -36,7 +37,7 @@ console.log(path)
   
   const handleDelete = async () =>{
 try {
-  await axios.delete(`http://localhost:5000/api/posts/${path}`,
+  await axios.delete(`${URL}/posts/${path}`,
   {data:{username: currentUser.username}})
   window.location.replace(`/`)
 } catch (error) {
@@ -46,7 +47,7 @@ try {
 
 const handleUpdate = async() =>{
   try {
-    await axios.put(`http://localhost:5000/api/posts/${path}`,
+    await axios.put(`${URL}/posts/${path}`,
     {username: currentUser.username, title, desc})
     setUpdateMode(false)
    // window.location.reload()

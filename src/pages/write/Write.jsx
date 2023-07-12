@@ -5,6 +5,7 @@ import { useSelector } from "react-redux";
 import { user } from "../../redux/authSlice";
 import { toast } from "react-toastify";
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
+import { URL } from "../../App";
 
 export default function Write() {
 
@@ -32,7 +33,7 @@ if(file){
   newPost.photo = filename
 
   try {
-    const res = await axios.post("http://localhost:5000/api/upload",
+    const res = await axios.post(`${URL}/upload`,
      data)
      console.log(res)
      toast.success("image uploaded")
@@ -42,7 +43,7 @@ if(file){
   }
 }
 try {
-  const post = await axios.post("http://localhost:5000/api/posts",
+  const post = await axios.post(`${URL}/posts`,
 newPost)
 console.log(post)
 toast.success("Blog uploaded")
@@ -61,7 +62,7 @@ history.push(`/post/${post.data._id}`)
     <div className="write">
       {file && <img
         className="writeImg"
-        src={URL.createObjectURL(file)}   
+        src={window.URL.createObjectURL(file)|| ''}   
          alt=""
       />}
       <form className="writeForm" onSubmit={handleSubmit}>

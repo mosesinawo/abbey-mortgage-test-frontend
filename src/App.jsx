@@ -14,7 +14,7 @@ import AOS from "aos";
 import "aos/dist/aos.css";
 import { useEffect } from "react";
 
-
+export const URL = process.env.REACT_APP_SERVER_URL
 function App() {
   useEffect(() => {
     AOS.init();

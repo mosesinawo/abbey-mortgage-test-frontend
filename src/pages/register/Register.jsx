@@ -4,6 +4,7 @@ import axios from "axios"
 import { useSelector } from "react-redux"
 import { toast } from "react-toastify"
 import { useHistory } from "react-router"
+import {URL} from "../../App";
 
 // import { toast } from "react-toastify"
 
@@ -23,7 +24,7 @@ export default function Register() {
     setError(false)
     e.preventDefault()
       try {
-          const res = await axios.post("http://localhost:5000/api/auth/register", {
+          const res = await axios.post(`${URL}/auth/register`, {
             username,password,email
           })
           console.log(res.data)

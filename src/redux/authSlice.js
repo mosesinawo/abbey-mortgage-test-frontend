@@ -2,11 +2,15 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
 import axios from 'axios'
 import { toast } from 'react-toastify'
+import { URL } from '../App'
+
 
 
 export const login = createAsyncThunk('users/login', async (user, thunkAPI) => {
+  
+
   try {
-    const res = await axios.post("http://localhost:5000/api/auth/login", user)
+    const res = await axios.post(`${URL}/auth/login`, user)
     console.log(res.data)
     toast.success(`successful`, {
       position: toast.POSITION.TOP_RIGHT

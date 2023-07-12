@@ -6,7 +6,7 @@ import { useState } from "react";
 
 export default function Topbar() {
 
-  const PF = "http://localhost:5000/images/";
+  const PF = ":5000/images/";
 
   const data = useSelector(user)
   const currentUser = data;

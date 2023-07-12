@@ -1,11 +1,12 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
 import axios from 'axios'
 import {search } from "../pages/homepage/Homepage"
+import { URL } from '../App'
 
   
   export const post = createAsyncThunk( 'blog/post', async () => {
       try{
-        const res =  await axios.get("http://localhost:5000/api/posts" )
+        const res =  await axios.get(`${URL}/posts`)
       return res.data
       }catch(err){
         console.log(err)
