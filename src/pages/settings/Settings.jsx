@@ -20,7 +20,7 @@ export default function Settings() {
 
   const history = useHistory()
 
-  const PF = "http://localhost:5000/images/";
+  const PF = "https://mblog-app-api.onrender.com/images/";
 
   const handleSubmit = async (e) => {
     e.preventDefault()
@@ -39,7 +39,7 @@ export default function Settings() {
       console.log(updatedUser)
 
       try {
-        const res = await axios.post(`${URL}/upload`,
+        const res = await axios.post(`${URL}upload`,
           data)
         console.log(res)
       } catch (err) {
@@ -47,7 +47,7 @@ export default function Settings() {
       }
     }
     try {
-      const user = await axios.put(`${URL}/users/` + currentUser._id,
+      const user = await axios.put(`${URL}users/` + currentUser._id,
         updatedUser)
       setSuccess(true)
       dispatch(getUser(user.data))
@@ -67,7 +67,7 @@ export default function Settings() {
 
   const handleDelete = async () => {
     try {
-      const res = await axios.delete(`${URL}/users/` + currentUser._id, {
+      const res = await axios.delete(`${URL}users/` + currentUser._id, {
         data: {
           userId: currentUser._id,
           username: currentUser.username

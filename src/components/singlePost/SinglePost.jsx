@@ -15,7 +15,7 @@ const [desc, setDesc] = useState("")
 const [updateMode, setUpdateMode] = useState(false)
  const data = useSelector(user)
   const currentUser = data;
- const PF = "http://localhost:5000/images/";
+ const PF = "https://mblog-app-api.onrender.com/images/";
 console.log(path)
 
 
@@ -23,7 +23,7 @@ console.log(path)
   useEffect(() => {
     const getPost = async () =>{
       try {
-        const res = await axios.get(`${URL}/posts/${path}`)
+        const res = await axios.get(`${URL}posts/${path}`)
         setPost(res.data)
      setTitle(res.data.title)
      setDesc(res.data.desc)
@@ -37,7 +37,7 @@ console.log(path)
   
   const handleDelete = async () =>{
 try {
-  await axios.delete(`${URL}/posts/${path}`,
+  await axios.delete(`${URL}posts/${path}`,
   {data:{username: currentUser.username}})
   window.location.replace(`/`)
 } catch (error) {
@@ -47,7 +47,7 @@ try {
 
 const handleUpdate = async() =>{
   try {
-    await axios.put(`${URL}/posts/${path}`,
+    await axios.put(`${URL}posts/${path}`,
     {username: currentUser.username, title, desc})
     setUpdateMode(false)
    // window.location.reload()

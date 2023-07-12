@@ -6,7 +6,7 @@ import { URL } from '../App'
   
   export const post = createAsyncThunk( 'blog/post', async () => {
       try{
-        const res =  await axios.get(`${URL}/posts`)
+        const res =  await axios.get(`${URL}posts`)
       return res.data
       }catch(err){
         console.log(err)

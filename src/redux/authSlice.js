@@ -10,7 +10,7 @@ export const login = createAsyncThunk('users/login', async (user, thunkAPI) => {
   
 
   try {
-    const res = await axios.post(`${URL}/auth/login`, user)
+    const res = await axios.post(`${URL}auth/login`, user)
     console.log(res.data)
     toast.success(`successful`, {
       position: toast.POSITION.TOP_RIGHT

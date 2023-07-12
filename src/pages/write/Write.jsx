@@ -33,7 +33,7 @@ if(file){
   newPost.photo = filename
 
   try {
-    const res = await axios.post(`${URL}/upload`,
+    const res = await axios.post(`${URL}upload`,
      data)
      console.log(res)
      toast.success("image uploaded")
@@ -43,7 +43,7 @@ if(file){
   }
 }
 try {
-  const post = await axios.post(`${URL}/posts`,
+  const post = await axios.post(`${URL}posts`,
 newPost)
 console.log(post)
 toast.success("Blog uploaded")

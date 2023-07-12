@@ -24,7 +24,7 @@ export default function Register() {
     setError(false)
     e.preventDefault()
       try {
-          const res = await axios.post(`${URL}/auth/register`, {
+          const res = await axios.post(`${URL}auth/register`, {
             username,password,email
           })
           console.log(res.data)

@@ -6,7 +6,7 @@ import { useState } from "react";
 
 export default function Topbar() {
 
-  const PF = ":5000/images/";
+  const PF = "https://mblog-app-api.onrender.com/images/";
 
   const data = useSelector(user)
   const currentUser = data;
