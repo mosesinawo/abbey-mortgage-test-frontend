@@ -36,11 +36,11 @@ export default function Login() {
         <label>Username</label>
         <input
          onChange={e => setUsername(e.target.value)}
-        className="loginInput" type="text" placeholder="Enter your email..." />
+        className="loginInput" type="text" placeholder="Enter your username..." />
         <label>Password</label>
         <input
          onChange={e => setPassword(e.target.value)}
-        className="loginInput" type="password" placeholder="Enter your password..." />
+        className="loginInput" type="text" placeholder="Enter your password..." />
         <button disabled={isFetching} className="loginButton">Login</button>
       </form>
         { err && <span style={{color:"red", marginTop:"10px"}}>Something went wrong!</span>}

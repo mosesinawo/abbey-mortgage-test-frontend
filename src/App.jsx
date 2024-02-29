@@ -13,6 +13,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import AOS from "aos";
 import "aos/dist/aos.css";
 import { useEffect } from "react";
+import './App.css';
 
 export const URL = process.env.REACT_APP_SERVER_URL
 function App() {
